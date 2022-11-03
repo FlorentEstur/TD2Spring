@@ -9,26 +9,27 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @Entity
-@Table(name = "ProduitSpring")
+@Table(name = "MagasinSpring")
 @Data @NoArgsConstructor @AllArgsConstructor
-public class Produit {
+public class Magasin {
 
 	@Id
 	private int id;
 	@NonNull
 	private String nom;
-	private int reference;
-	private double prixHT;
-	private double poids;
+	private String adresse;
+	private int cp;
+	private String ville;
 	@ManyToMany
 	@JoinTable(name="Magasin_Produit",
-	joinColumns = @JoinColumn(name="idMagasin"),
-		inverseJoinColumns = @JoinColumn(name="idProduit"))
-	protected List<Magasin> listeMagasin;
+	joinColumns = @JoinColumn(name="idProduit"),
+		inverseJoinColumns = @JoinColumn(name="idMagasin"))
+	protected List<Produit> listeProduit;
 }
